@@ -7,10 +7,14 @@ export class CodeActionFromCommands implements vscode.CodeActionProvider {
         this.commands = commands
     }
 
-    public async provideCodeActions() {
-        for (const cmd of this.commands) {
-            await vscode.commands.executeCommand(cmd)
-        }
+    public provideCodeActions() {
+        // it seems once "await" appears on the top level of this function, only the first provider will be called, even though multiple are registered
+        // use a promise chain to make this function synchronous, and make sure commands are executed in sequence
+
+        this.commands.reduce(async function (promiseChain, command) {
+            await promiseChain
+            return await vscode.commands.executeCommand(command)
+        }, Promise.resolve())
 
         return null
     }
@@ -23,11 +27,17 @@ export function activate(context: vscode.ExtensionContext) {
     const definitions = vscode.workspace.getConfiguration(extensionName).get<object>('codeActions.definitions', {})
 
     for (const [codeActionName, codeActionDef] of Object.entries(definitions)) {
-        let selector: string[] | '*' = codeActionDef['languages']
-        if (!selector) {
-            selector = '*'
-        } else if (selector.length === 0) {
+        const languages: string[] = codeActionDef['languages']
+        let selector: vscode.DocumentSelector
+
+        if (!languages) {
+            selector = { scheme: 'file' }
+        } else if (languages.length === 0) {
             continue
+        } else {
+            selector = languages.map(function (language) {
+                return { scheme: 'file', language }
+            })
         }
 
         const providerName = `${extensionName}.${codeActionName}`

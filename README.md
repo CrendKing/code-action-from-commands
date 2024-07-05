@@ -19,7 +19,7 @@ One way to know the ID of a command through the Command Palette is to click the 
         ]
     },
 
-    // Preview the Markdown document on save
+    // Preview the Markdown file on save
     "previewMarkdown": {
         "commands": [
             "markdown.showPreview"
@@ -40,7 +40,7 @@ One way to know the ID of a command through the Command Palette is to click the 
 "editor.codeActionsOnSave": {
     "source.codeActionFromCommands.tabToSpaces": "always",
     "source.codeActionFromCommands.previewMarkdown": "explicit"
-},
+}
 ```
 
 ### Attribution
