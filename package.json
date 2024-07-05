@@ -1,0 +1,89 @@
+{
+    "name": "code-action-from-commands",
+    "displayName": "Code Action from Commands",
+    "publisher": "crendking",
+    "description": "Create Code Action that executes sequence of commands",
+    "version": "0.1.0",
+    "license": "See license in LICENSE.txt",
+    "engines": {
+        "vscode": "^1.49.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "code",
+        "action",
+        "command"
+    ],
+    "icon": "media/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CrendKing/code-action-from-commands"
+    },
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "Code Action from Commands",
+            "properties": {
+                "codeActionFromCommands.codeActions.definitions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                            "commands": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "List of command IDs, which are executed in sequence."
+                            },
+                            "languages": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "markdownDescription": "List of [language identifiers](https://code.visualstudio.com/docs/languages/identifiers#_known-language-identifiers) in which the code action is defined. Leave undefined to include all languages."
+                            }
+                        },
+                        "required": [
+                            "commands"
+                        ]
+                    },
+                    "description": "Mapping from Code Action name to its definition.",
+                    "examples": [
+                        {
+                            "tabToSpaces": {
+                                "commands": [
+                                    "editor.action.indentationToSpaces"
+                                ]
+                            }
+                        },
+                        {
+                            "previewMarkdown": {
+                                "commands": [
+                                    "markdown.showPreview"
+                                ],
+                                "languages": ["markdown"]
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "bun run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "*",
+        "@types/vscode": "*",
+        "@vscode/vsce": "*",
+        "typescript": "*"
+    }
+}
