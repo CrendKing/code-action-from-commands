@@ -1,3 +1,7 @@
+# 0.1.2
+
+Make sure not triggering the commands when user explicitly invokes code actions.
+
 # 0.1.1
 
 Fix issue that only one Code Action provider is called, even though multiple are registered.

@@ -7,14 +7,12 @@ export class CodeActionFromCommands implements vscode.CodeActionProvider {
         this.commands = commands
     }
 
-    public provideCodeActions() {
-        // it seems once "await" appears on the top level of this function, only the first provider will be called, even though multiple are registered
-        // use a promise chain to make this function synchronous, and make sure commands are executed in sequence
-
-        this.commands.reduce(async function (promiseChain, command) {
-            await promiseChain
-            return await vscode.commands.executeCommand(command)
-        }, Promise.resolve())
+    public async provideCodeActions(document: vscode.TextDocument, range: vscode.Range | vscode.Selection, context: vscode.CodeActionContext) {
+        if (context.triggerKind === vscode.CodeActionTriggerKind.Automatic) {
+            for (const cmd of this.commands) {
+                await vscode.commands.executeCommand(cmd)
+            }
+        }
 
         return null
     }
