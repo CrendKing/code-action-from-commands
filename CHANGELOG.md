@@ -1,3 +1,8 @@
+# 0.1.3
+
+* Instead of executing commands in-place, switch to return commands from code action, which is more idiomatic.
+* Update code action whenever code action definitions from configuration change.
+
 # 0.1.2
 
 Make sure not triggering the commands when user explicitly invokes code actions.
