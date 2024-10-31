@@ -3,7 +3,7 @@
     "displayName": "Code Action from Commands",
     "publisher": "crendking",
     "description": "Create Code Action that executes sequence of commands",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "license": "See license in LICENSE.txt",
     "engines": {
         "vscode": "^1.49.0"
