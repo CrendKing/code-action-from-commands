@@ -8,7 +8,7 @@ With this extension, you can create Code Action that executes sequence of comman
 
 One way to know the ID of a command through the Command Palette is to click the gear icon to the right, then check the input box in the "Keyboard Shortcuts" page.
 
-### Example configuration
+## Example configuration
 
 ```jsonc
 "codeActionFromCommands.codeActions.definitions": {
@@ -43,6 +43,6 @@ One way to know the ID of a command through the Command Palette is to click the 
 }
 ```
 
-### Attribution
+## Attribution
 
 Extension icon: [Action figure icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/action-figure)
