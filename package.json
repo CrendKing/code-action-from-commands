@@ -3,7 +3,7 @@
     "displayName": "Code Action from Commands",
     "publisher": "crendking",
     "description": "Create Code Action that executes sequence of commands",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "license": "See license in LICENSE.txt",
     "engines": {
         "vscode": "^1.49.0"
@@ -19,7 +19,7 @@
     "icon": "media/icon.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/CrendKing/code-action-from-commands"
+        "url": "https://github.com/CrendKing/vscode-code-action-from-commands"
     },
     "activationEvents": [
         "onStartupFinished"
