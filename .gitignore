@@ -1,4 +1,6 @@
-*.cmd
-*.vsix
 node_modules/
 out/
+
+*.cmd
+*.lock
+*.vsix

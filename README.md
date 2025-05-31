@@ -43,6 +43,10 @@ One way to know the ID of a command through the Command Palette is to click the 
 }
 ```
 
+## Note
+
+If you use a command that changes the file content (e.g. `editor.action.indentationToSpaces`) on save, it empties the redo history the same way as you manually invoked it, or like just typed anything.
+
 ## Attribution
 
 Extension icon: [Action figure icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/action-figure)
